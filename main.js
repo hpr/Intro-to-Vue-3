@@ -2,11 +2,12 @@ const app = Vue.createApp({
   data() {
     return {
       cart: 0,
+      inStock: false,
       product: 'Socks',
       image: './assets/images/socks_green.jpg',
       description: 'Footwear',
       url: 'https://www.vuemastery.com/courses/intro-to-vue-3/attribute-binding-vue3',
-      inventory: 100,
+      inventory: 20,
       onSale: true,
       details: ['50% cotton', '30% wool', '20% polyester'],
       variants: [
@@ -19,9 +20,11 @@ const app = Vue.createApp({
   methods: {
     addToCart() {
       this.cart++;
+      this.inventory--;
     },
     removeFromCart() {
       this.cart--;
+      this.inventory++;
     },
     updateImage(variantImage) {
       this.image = variantImage;
